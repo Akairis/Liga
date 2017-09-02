@@ -1,0 +1,36 @@
+{% extends 'AdminBundle:Default:index.html.twig' %}
+
+{% block body %}
+    <h1>Teams list</h1> <a href="{{ path('team_new') }}"><button type="button" class="btn btn-success">+ Add new team</button></a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Img</th>
+                <th>Teamname</th>
+                <th>Point</th>
+                <th>Shootgoal</th>
+                <th>Losegoal</th>
+                <th>Favourite</th>
+                <th>Show</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for team in teams %}
+            <tr>
+                <td><a href="{{ path('team_show', { 'id': team.id }) }}">{{ team.id }}</a></td>
+                <td><img width="20px" src="{{ asset('uploads/logos/') }}{{ team.img }}"></td>
+                <td>{{ team.teamName }}</td>
+                <td>{{ team.point }}</td>
+                <td>{{ team.shootGoal }}</td>
+                <td>{{ team.loseGoal }}</td>
+                <td>{% if team.favourite %}Yes{% else %}No{% endif %}</td>
+                <td><a href="{{ path('team_show', { 'id': team.id }) }}"><button type="button" class="btn btn-success">Show</button></a></td>
+                <td><a href="{{ path('team_edit', { 'id': team.id }) }}"><button type="button" class="btn btn-success">Edit</button></a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
