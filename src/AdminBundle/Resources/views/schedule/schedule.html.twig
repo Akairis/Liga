@@ -1,0 +1,31 @@
+
+{% extends 'AdminBundle:Default:index.html.twig' %}
+
+{% block body %}
+
+{{ form_start(form) }}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Kolejka</th>
+            <th>Gospodarze</th>
+            <th>Goście</th>
+            <th>Data</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>#1</td>
+            <td>{{ form_widget(form.team1) }}</td>
+            <td>{{ form_widget(form.team2) }}</td>
+            <td>{{ form_widget(form.date) }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    {{ form_widget(form.save) }}
+
+{{ form_end(form) }}
+
+{% endblock %}

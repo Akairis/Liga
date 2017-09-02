@@ -22,20 +22,14 @@ class Round
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="host", type="integer")
-     * @ManyToOne(targetEntity="Address")
-     * @JoinColumn(name="address_id", referencedColumnName="id")
-     *
+     * @ORM\ManyToOne(targetEntity="Team", inversedBy="rounds")
+     * @ORM\JoinColumn(name="host_id", referencedColumnName="id")
      */
     private $host;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="visitor", type="integer")
-     *
+     * @ORM\ManyToOne(targetEntity="Team", inversedBy="rounds")
+     * @ORM\JoinColumn(name="visitor_id", referencedColumnName="id")
      */
     private $visitor;
 
