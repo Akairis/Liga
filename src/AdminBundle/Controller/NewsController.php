@@ -3,14 +3,15 @@
 namespace AdminBundle\Controller;
 
 use AdminBundle\Entity\News;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
 
 /**
  * News controller.
- *
- * @Route("news")
+ * @Security("has_role('ROLE_USER')")
+ * @Route("admin/news")
  */
 class NewsController extends Controller
 {
