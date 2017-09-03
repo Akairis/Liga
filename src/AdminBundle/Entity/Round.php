@@ -36,14 +36,14 @@ class Round
     /**
      * @var int
      *
-     * @ORM\Column(name="host_goal", type="integer")
+     * @ORM\Column(name="host_goal", type="integer", nullable=true)
      */
     private $hostGoal;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="visitor_goal", type="integer")
+     * @ORM\Column(name="visitor_goal", type="integer, nullable=true")
      */
     private $visitorGoal;
 

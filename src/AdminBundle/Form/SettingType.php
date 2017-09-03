@@ -13,7 +13,7 @@ class SettingType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('yourTeam')->add('roundNumber');
+        $builder->add('yourTeam')->add('roundNumber')->add('city');
     }
     
     /**

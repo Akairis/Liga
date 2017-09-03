@@ -97,27 +97,4 @@ class Setting
     {
         return $this->roundNumber;
     }
-
-    /**
-     * Set city
-     *
-     * @param string $city
-     * @return Setting
-     */
-    public function setCity($city)
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * Get city
-     *
-     * @return string 
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
 }

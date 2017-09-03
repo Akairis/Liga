@@ -3,6 +3,7 @@
 namespace AdminBundle\Controller;
 
 use AdminBundle\Entity\Setting;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -10,7 +11,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Setting controller.
  *
- * @Route("setting")
+ * @Security("has_role('ROLE_USER')")
+ * @Route("admin/setting")
  */
 class SettingController extends Controller
 {

@@ -39,10 +39,24 @@ class ScheduleController extends Controller
 
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
+            // pobieramy dane z formularza
             $data = $form->getData();
-            print_r($data['team1']->getId());
-            print_r($data['team2']->getId());
-            die;
+//            print_r($data['team1']->getId());
+//            print_r($data['team2']->getId());
+
+            // wrzucamy dane do obiektu
+            $round = new Round();
+            $round->setHost($data['team1']->getId());
+            $round->setVisitor($data['team2']->getId());
+            $round->setDate($data['date']);
+            $round->setRound($number);
+
+            // zapisujemy do bazy
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($round);
+            $em->flush();
+
+            die("DODANE!");
 
         }
 
@@ -56,8 +70,11 @@ class ScheduleController extends Controller
      */
     public function generateAllLinkRoundAction()
     {
-        // tutaj ustawiamy liczbe kolejek
-        $roundNumber = 10;
+        // tutaj wczytujemy liczbe kolejek z bazy danych
+        $em = $this->getDoctrine()->getManager();
+        $setting = $em->getRepository('AdminBundle:Setting')->findOneById(1);
+
+        $roundNumber = $setting->getRoundNumber();
 
         return $this->render('AdminBundle:schedule:generateRound.html.twig', array(
             'cos' => 'cos', 'roundNumber' => $roundNumber,
