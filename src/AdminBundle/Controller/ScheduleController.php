@@ -2,7 +2,8 @@
 
 namespace AdminBundle\Controller;
 
-use AdminBundle\Entity\Team;
+use AdminBundle\AdminBundle;
+use AdminBundle\Entity\Round;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -18,10 +19,11 @@ use Symfony\Component\HttpFoundation\Response;
 class ScheduleController extends Controller
 {
     /**
-     * @Route("/add", name="schedule_index")
+     * @Route("/add/{number}", name="schedule_index")
      */
-    public function addMatchAction(Request $request)
+    public function addMatchAction(Request $request, $number)
     {
+        // budujemy formularz
         $form = $this->createFormBuilder()
             ->add('team1', EntityType::class, array(
                 'class' => 'AdminBundle:Team',
@@ -48,5 +50,36 @@ class ScheduleController extends Controller
             'form' => $form->createView(),
         ));
     }
+
+    /**
+     * @Route("/show", name="schedule_show")
+     */
+    public function generateAllLinkRoundAction()
+    {
+        // tutaj ustawiamy liczbe kolejek
+        $roundNumber = 10;
+
+        return $this->render('AdminBundle:schedule:generateRound.html.twig', array(
+            'cos' => 'cos', 'roundNumber' => $roundNumber,
+        ));
+    }
+
+    /**
+     * @Route("/show/{roundNumber}", name="show_round_by_number")
+     */
+    public function showRoundAction($roundNumber)
+    {
+        $em = $this->getDoctrine()->getManager();
+//        $round = $em->getRepository('AdminBundle:Round')->findAll();
+
+        $round = $em->getRepository('AdminBundle:Round')->findBy(
+            array('round' => $roundNumber)
+        );
+
+        return $this->render('AdminBundle:schedule:show.html.twig', array(
+            'round' => $round, 'roundNumber' => $roundNumber
+        ));
+    }
+
 
 }

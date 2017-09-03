@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Settings list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Yourteam</th>
+                <th>Roundnumber</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for setting in settings %}
+            <tr>
+                <td><a href="{{ path('setting_show', { 'id': setting.id }) }}">{{ setting.id }}</a></td>
+                <td>{{ setting.yourTeam }}</td>
+                <td>{{ setting.roundNumber }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('setting_show', { 'id': setting.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('setting_edit', { 'id': setting.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('setting_new') }}">Create a new setting</a>
+        </li>
+    </ul>
+{% endblock %}

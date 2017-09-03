@@ -1,0 +1,30 @@
+{% extends 'AdminBundle:Default:index.html.twig' %}
+
+{% block body %}
+    <h1>Terminarz - <b>Kolejka {{ roundNumber }}</b></h1> <a href=""><button type="button" class="btn btn-success">Dodaj mecz</button></a>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Kolejka</th>
+            <th>Gospodarze</th>
+            <th>Goście</th>
+            <th>Wynik</th>
+            <th>Data</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for round in round %}
+            <tr>
+                <td>{{ round.round }}</td>
+                <td>{{ round.host }}</td>
+                <td>{{ round.visitor }}</td>
+                <td>{{ round.hostGoal }} : {{ round.visitorGoal }}</td>
+                <td>{{ round.date|date }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

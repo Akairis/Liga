@@ -57,7 +57,6 @@ class MatchController extends Controller
 
         }
 
-
         return $this->render('AdminBundle:match:match.html.twig', array(
             'form' => $form->createView(),
         ));

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Rounds list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Hostgoal</th>
+                <th>Visitorgoal</th>
+                <th>Date</th>
+                <th>Round</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for round in rounds %}
+            <tr>
+                <td><a href="{{ path('round_show', { 'id': round.id }) }}">{{ round.id }}</a></td>
+                <td>{{ round.hostGoal }}</td>
+                <td>{{ round.visitorGoal }}</td>
+                <td>{% if round.date %}{{ round.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ round.round }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('round_show', { 'id': round.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('round_edit', { 'id': round.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('round_new') }}">Create a new round</a>
+        </li>
+    </ul>
+{% endblock %}

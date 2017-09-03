@@ -73,6 +73,12 @@ class Team
      */
     private $players;
 
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->getTeamName();
+    }
+
     /**
      * Get id
      *

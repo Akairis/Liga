@@ -1,0 +1,13 @@
+
+{% extends 'AdminBundle:Default:index.html.twig' %}
+
+{% block body %}
+
+    <h1>Wybierz kolejkę!</h1>
+
+    {% for val in 1..roundNumber %}
+        <a href="{{ path('show_round_by_number', { 'roundNumber': val }) }}"><button type="button" class="btn btn-success">Runda {{ val }}</button></a>
+    {% endfor %}
+
+
+{% endblock %}
