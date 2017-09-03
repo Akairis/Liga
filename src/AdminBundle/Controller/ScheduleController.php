@@ -46,8 +46,8 @@ class ScheduleController extends Controller
 
             // wrzucamy dane do obiektu
             $round = new Round();
-            $round->setHost($data['team1']->getId());
-            $round->setVisitor($data['team2']->getId());
+            $round->setHost($data['team1']);
+            $round->setVisitor($data['team2']);
             $round->setDate($data['date']);
             $round->setRound($number);
 
@@ -56,12 +56,16 @@ class ScheduleController extends Controller
             $em->persist($round);
             $em->flush();
 
-            die("DODANE!");
-
         }
 
+
+        $emRound = $this->getDoctrine()->getManager();
+        $round = $emRound->getRepository('AdminBundle:Round')->findBy(
+            array('round' => $number)
+        );
+
         return $this->render('AdminBundle:schedule:schedule.html.twig', array(
-            'form' => $form->createView(),
+            'form' => $form->createView(), 'round' => $round, 'roundNumber' => $number
         ));
     }
 
@@ -87,8 +91,6 @@ class ScheduleController extends Controller
     public function showRoundAction($roundNumber)
     {
         $em = $this->getDoctrine()->getManager();
-//        $round = $em->getRepository('AdminBundle:Round')->findAll();
-
         $round = $em->getRepository('AdminBundle:Round')->findBy(
             array('round' => $roundNumber)
         );

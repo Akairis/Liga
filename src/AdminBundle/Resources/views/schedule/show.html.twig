@@ -1,8 +1,8 @@
 {% extends 'AdminBundle:Default:index.html.twig' %}
 
 {% block body %}
-    <h1>Terminarz - <b>Kolejka {{ roundNumber }}</b></h1> <a href=""><button type="button" class="btn btn-success">Dodaj mecz</button></a>
-
+    <h1>Terminarz - <b>Kolejka {{ roundNumber }}</b></h1>
+    <a href="{{ path('schedule_index', { 'number': roundNumber }) }}"><button type="button" class="btn btn-success">+ dodaj Mecz</button></a>
     <table class="table">
         <thead>
         <tr>

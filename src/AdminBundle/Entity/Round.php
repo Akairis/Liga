@@ -43,7 +43,7 @@ class Round
     /**
      * @var int
      *
-     * @ORM\Column(name="visitor_goal", type="integer, nullable=true")
+     * @ORM\Column(name="visitor_goal", type="integer", nullable=true)
      */
     private $visitorGoal;
 

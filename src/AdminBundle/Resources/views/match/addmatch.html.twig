@@ -1,0 +1,38 @@
+{% extends 'AdminBundle:Default:index.html.twig' %}
+
+{% block body %}
+
+    <h1>Wyniki spotkań - <b>Kolejka {{ roundNumber }}</b></h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Kolejka</th>
+            <th>Gospodarze</th>
+            <th>Goście</th>
+            <th>Wynik</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for round in round %}
+            <tr>
+                <td>{{ round.round }}</td>
+                <td>{{ round.host }}</td>
+                <td>{{ round.visitor }}</td>
+                <td>
+                    <form method="post">
+                        <input type="hidden" name="matchId" value="{{  round.id}}">
+                        <input type="hidden" name="host" value="{{  round.host.id}}">
+                        <input type="hidden" name="visitor" value="{{  round.visitor.id}}">
+                        <input type="number" name="hostGoal" value="{{ round.hostGoal }}">  :
+                        <input type="number" name="visitorGoal" value="{{ round.visitorGoal }}">
+                        <button type="submit" class="btn btn-success">Zapisz</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}

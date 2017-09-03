@@ -3,29 +3,41 @@
 
 {% block body %}
 
-{{ form_start(form) }}
+    <h1>Terminarz - <b>Kolejka {{ roundNumber }}</b></h1>
 
+    <a href="{{ path('schedule_index', { 'number': roundNumber }) }}"><button type="button" class="btn btn-success">+ dodaj Mecz</button></a>
     <table class="table">
         <thead>
         <tr>
             <th>Kolejka</th>
             <th>Gospodarze</th>
             <th>Goście</th>
+            <th>Wynik</th>
             <th>Data</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>#1</td>
-            <td>{{ form_widget(form.team1) }}</td>
-            <td>{{ form_widget(form.team2) }}</td>
-            <td>{{ form_widget(form.date) }}</td>
-        </tr>
+        {% for round in round %}
+            <tr>
+                <td>{{ round.round }}</td>
+                <td>{{ round.host }}</td>
+                <td>{{ round.visitor }}</td>
+                <td>{{ round.hostGoal }} : {{ round.visitorGoal }}</td>
+                <td>{{ round.date|date }}</td>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
 
+    <h1>Dodaj mecz!</h1>
+    {{ form_start(form) }}
+
+            <td>{{ form_widget(form.team1) }}</td>
+            <td>{{ form_widget(form.team2) }}</td>
+            <td>{{ form_widget(form.date) }}</td>
+
     {{ form_widget(form.save) }}
 
-{{ form_end(form) }}
+    {{ form_end(form) }}
 
 {% endblock %}

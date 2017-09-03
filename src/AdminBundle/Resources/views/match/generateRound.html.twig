@@ -6,7 +6,7 @@
     <h1>Wybierz kolejkę!</h1>
 
     {% for val in 1..roundNumber %}
-        <a href="{{ path('show_round_by_number', { 'roundNumber': val }) }}"><button type="button" class="btn btn-success">Kolejka {{ val }}</button></a>
+        <a href="{{ path('add_match', { 'roundNumber': val }) }}"><button type="button" class="btn btn-success">Kolejka {{ val }}</button></a>
     {% endfor %}
 
 

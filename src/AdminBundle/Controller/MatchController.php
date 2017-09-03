@@ -2,6 +2,7 @@
 
 namespace AdminBundle\Controller;
 
+use AdminBundle\Entity\Round;
 use AdminBundle\Entity\Team;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -19,46 +20,63 @@ class MatchController extends Controller
     /**
      * @Route("/", name="match_index")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $setting = $em->getRepository('AdminBundle:Setting')->findOneById(1);
 
-        return new Response("Match");
+        $roundNumber = $setting->getRoundNumber();
+
+        return $this->render('AdminBundle:match:generateRound.html.twig', array(
+            'roundNumber' => $roundNumber,
+        ));
     }
 
     /**
-     * @Route("/add", name="match_add")
+     * @Route("/add/{roundNumber}", name="add_match")
      */
-    public function addMatchAction(Request $request)
+    public function addMatchByRoundAction(Request $request, $roundNumber)
     {
-        $form = $this->createFormBuilder()
-            ->add('team1', EntityType::class, array(
-                'class' => 'AdminBundle:Team',
-                'choice_label' => 'teamName',
-            ))
-            ->add('team1goal', 'number')
-            ->add('team2', EntityType::class, array(
-                'class' => 'AdminBundle:Team',
-                'choice_label' => 'teamName',
-            ))
-            ->add('team2goal', 'number')
-            ->add('date', 'date')
-            ->add('date2', 'datetime')
-            ->add('save', 'submit', ['label' => 'Dodaj wynik!'])
-            ->getForm();
+        $em = $this->getDoctrine()->getManager();
+        $round = $em->getRepository('AdminBundle:Round')->findBy(
+            array('round' => $roundNumber)
+        );
 
-        $form->handleRequest($request);
-        if($form->isSubmitted()){
-            $data = $form->getData();
-            print_r($data['team1']->getId());
-            print_r($data['team1goal']);
-            print_r($data['team2']->getId());
-            print_r($data['team2goal']);
-            die;
+        // dane pobrane z formularza
+        $matchId = $request->get('matchId');
+        $host = $request->get('host');
+        $visitor = $request->get('visitor');
+        $hostGoal = $request->get('hostGoal');
+        $visitorGoal = $request->get('visitorGoal');
 
+        // jezeli formularz zostal wyslany robimy update tabeli
+        if ($this->getRequest()->isMethod('POST')){
+            $newMatch = $em->getRepository('AdminBundle:Round')->find($matchId);
+            $newMatch->setHostGoal($hostGoal);
+            $newMatch->setVisitorGoal($visitorGoal);
+
+            $em->persist($newMatch);
+            $em->flush();
         }
 
-        return $this->render('AdminBundle:match:match.html.twig', array(
-            'form' => $form->createView(),
+
+        // Zapisujemy do bazy danych
+
+        // Przydzielamy punkty oraz bramki do encji ROUND
+        if($hostGoal > $visitorGoal){
+            echo "GOSPODARZE WYGRYWAJA <br>";
+            echo "3 pkt dla gospodarzy o ID $host";
+
+        }else if($visitorGoal > $hostGoal){
+            echo "GOŚCIE WYGRYWAJA <br>";
+            echo "3 pkt dla gości o ID $visitor";
+        }else if($hostGoal == $visitorGoal){
+            echo "REMIS, po 1 pkt dla kazdego!";
+        }
+
+        return $this->render('AdminBundle:match:addmatch.html.twig', array(
+            'round' => $round, 'roundNumber' => $roundNumber
         ));
     }
 }
+
