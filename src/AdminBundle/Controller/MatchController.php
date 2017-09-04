@@ -57,6 +57,7 @@ class MatchController extends Controller
 
             $em->persist($newMatch);
             $em->flush();
+            $this->addScore();
         }
 
         return $this->render('AdminBundle:match:addmatch.html.twig', array(
@@ -64,7 +65,7 @@ class MatchController extends Controller
         ));
     }
 
-    public function updateTableAction($team, $newPoint, $newGoalLost, $newGoalShot)
+    public function updateTable($team, $newPoint, $newGoalLost, $newGoalShot)
     {
         $em = $this->getDoctrine()->getManager();
         $teamHost = $em->getRepository('AdminBundle:Team')->find($team);
@@ -79,18 +80,32 @@ class MatchController extends Controller
     }
 
     /**
-     * @Route("/score")
+     * @Route("/reset")
      */
+    public function resetTable()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $team = $em->getRepository('AdminBundle:Team')->findAll();
+
+        foreach($team as $key => $value){
+            $value->setPoint(0);
+            $value->setLoseGoal(0);
+            $value->setShootGoal(0);
+
+            $em->persist($value);
+            $em->flush();
+        }
+
+        return true;
+    }
+
     public function addScore()
     {
         $em = $this->getDoctrine()->getManager();
         $rounds = $em->getRepository('AdminBundle:Round')->findAll();
 
         // zerujemy
-        $newHostPoint = 0;
-        $newVisitorPoint = 0;
-        $newHostGoal = 0;
-        $newVisitorGoal = 0;
+        $this->resetTable();
 
         foreach($rounds as $key => $value){
             $id = $value->getId();
@@ -99,24 +114,20 @@ class MatchController extends Controller
             $hostGoal = $value->getHostGoal();
             $visitorGoal = $value->getVisitorGoal();
 
-
             if($hostGoal > $visitorGoal){
                 // Gospodarze wygrywają +3pkt
-                $newHostGoal = $newHostGoal + 3;
-                //$this->updateTableAction($host, 3, $visitorGoal, $hostGoal);
+                $this->updateTable($host, 3, $visitorGoal, $hostGoal);
 
             }else if($visitorGoal > $hostGoal){
                 // Goście wygrywają +3pkt
-                //$this->updateTableAction($visitor, 3, $hostGoal, $visitorGoal);
+                $this->updateTable($visitor, 3, $hostGoal, $visitorGoal);
 
             }else if($visitorGoal == $hostGoal){
                 // Remis +1 pkt dla kazdego
-                //$this->updateTableAction($host, 1, $visitorGoal, $hostGoal);
-                //$this->updateTableAction($visitor, 1, $hostGoal, $visitorGoal);
+                $this->updateTable($host, 1, $visitorGoal, $hostGoal);
+                $this->updateTable($visitor, 1, $hostGoal, $visitorGoal);
             }
         }
-
-        return new Response("Update zrobiony!");
 
     }
 }
