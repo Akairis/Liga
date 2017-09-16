@@ -1,0 +1,144 @@
+{% extends 'UserBundle:Default:index.html.twig' %}
+
+{% block body %}
+
+<!-- Featured News -->
+<div class="card card--clean">
+    <header class="card__header card__header--has-filter">
+        <h4>Najnowsze Aktualności</h4>
+        <a href="#" class="btn btn-default btn-outline btn-xs card-header__button">See All News</a>
+
+    </header>
+</div>
+
+<!-- Post Area 1 -->
+<div class="posts posts--cards post-grid row">
+
+    {% for news in news %}
+
+        <div class="post-grid__item col-sm-6">
+            <div class="posts__item posts__item--card posts__item--category-1 card">
+                <figure class="posts__thumb">
+                    <div class="posts__cat">
+                        <span class="label posts__cat-label">{{ news.category }}</span>
+                    </div>
+                    <a href="#"><img src="{{ news.img }}" alt=""></a>
+                </figure>
+                <div class="posts__inner card__content">
+                    <a href="#" class="posts__cta"></a>
+                    <time datetime="2016-08-23" class="posts__date"> </time>
+                    <h6 class="posts__title"><a href="#">{{ news.title }}</a></h6>
+                    <div class="posts__excerpt">
+                        {{ news.description }}
+                    </div>
+                </div>
+                <footer class="posts__footer card__footer">
+                    <div class="post-author">
+                        <figure class="post-author__avatar">
+                            <img src="{{ asset('user/assets/images/samples/avatar-1.jpg')}}" alt="Post Author Avatar">
+                        </figure>
+                        <div class="post-author__info">
+                            <h4 class="post-author__name">Tomi</h4>
+                        </div>
+                    </div>
+                    <ul class="post__meta meta">
+                        <li class="meta__item meta__item--views">2369</li>
+                        <li class="meta__item meta__item--likes"><a href="#"><i class="meta-like icon-heart"></i> 530</a></li>
+                        <li class="meta__item meta__item--comments"><a href="#">18</a></li>
+                    </ul>
+                </footer>
+            </div>
+        </div>
+
+    {% endfor %}
+
+</div>
+<!-- Post Area 1 / End -->
+
+
+<!-- Main News Banner -->
+<div class="main-news-banner main-news-banner--soccer-ball">
+    <div class="main-news-banner__inner">
+        <div class="posts posts--simple-list posts--simple-list--xlg">
+            <div class="posts__item posts__item--category-1">
+                <div class="posts__inner">
+                    <div class="posts__cat">
+                        <span class="label posts__cat-label">The Team</span>
+                    </div>
+                    <h6 class="posts__title"><a href="#">Today was unveiled the <span class="main-news-banner__highlight">New Football</span> for the league</a></h6>
+                    <time datetime="2016-08-23" class="posts__date">August 23rd, 2016</time>
+                    <div class="posts__excerpt">
+                        Lorem ipsum dolor sit amet, consectetur adipisi nel elit, sed do eiusmod tempor incididunt ut labore et dolore.
+                    </div>
+                    <div class="posts__more">
+                        <a href="#" class="btn btn-inverse btn-sm btn-outline btn-icon-right btn-condensed">Read More <i class="fa fa-plus text-primary"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- Main News Banner / End -->
+
+<!-- Post Pagination -->
+<nav class="post-pagination text-center">
+    <ul class="pagination pagination--condensed pagination--lg">
+        <li class="active"><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><span>...</span></li>
+        <li><a href="#">16</a></li>
+    </ul>
+</nav>
+<!-- Post Pagination / End -->
+{% endblock %}
+
+{% block schedule %}
+
+
+    <!-- Widget: Standings -->
+    <aside class="widget card widget--sidebar widget-standings">
+        <div class="widget__title card__header card__header--has-btn">
+            <h4>Tabela ligowa</h4>
+            <a href="#" class="btn btn-default btn-outline btn-xs card-header__button">See All Stats</a>
+        </div>
+        <div class="widget__content card__content">
+            <div class="table-responsive">
+                <table class="table table-hover table-standings">
+                    <thead>
+                    <tr>
+                        <th>#Pozycja</th>
+                        <th>W</th>
+                        <th>P</th>
+                        <th>PTS</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for schedule in schedule %}
+                        <tr>
+                            <td>
+                                <div class="team-meta">
+                                    <figure class="team-meta__logo">
+                                        <img src="{{ asset('uploads/logos/') }}{{ schedule.img }}" alt="">
+                                    </figure>
+                                    <div class="team-meta__info">
+                                        <h6 class="team-meta__name">{{ schedule.teamName }}</h6>
+                                        <span class="team-meta__place">miejscowosc</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>{{ schedule.shootGoal }}</td>
+                            <td>{{ schedule.loseGoal }}</td>
+                            <td>{{ schedule.point }}</td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </aside>
+    <!-- Widget: Standings / End -->
+{% endblock %}

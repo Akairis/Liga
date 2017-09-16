@@ -1,1 +1,652 @@
-Hello World!
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <title>Liga ::</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="{{ asset('user/assets/images/soccer/favicons/favicon.ico')}}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('assets/images/soccer/favicons/favicon-120.png')}}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('assets/images/soccer/favicons/favicon-152.png')}}">
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+
+    <!-- Google Web Fonts
+    ================================================== -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CSource+Sans+Pro:400,700" rel="stylesheet">
+
+    <!-- CSS
+    ================================================== -->
+    <!-- Preloader CSS -->
+    <link href="{{ asset('user/assets/css/preloader.css') }}" rel="stylesheet">
+
+    <!-- Vendor CSS -->
+    <link href="{{ asset('user/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('user/assets/fonts/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('user/assets/fonts/simple-line-icons/css/simple-line-icons.css')}}" rel="stylesheet">
+    <link href="{{ asset('user/assets/vendor/magnific-popup/dist/magnific-popup.css')}}" rel="stylesheet">
+    <link href="{{ asset('user/assets/vendor/slick/slick.css')}}" rel="stylesheet">
+
+    <!-- Template CSS-->
+    <link href="{{ asset('user/assets/css/style-dark.css')}}" rel="stylesheet">
+
+    <!-- Custom CSS-->
+    <link href="{{ asset('user/assets/css/custom.css')}}" rel="stylesheet">
+
+</head>
+<body class="template-soccer">
+
+<div class="site-wrapper clearfix">
+    <div class="site-overlay"></div>
+
+
+
+    <!-- Header
+    ================================================== -->
+
+    <!-- Header Mobile -->
+    <div class="header-mobile clearfix" id="header-mobile">
+        <div class="header-mobile__logo">
+            <a href="_soccer_index.html"><img src="{{ asset('user/assets/images/soccer/logo.png') }}" srcset="{{ asset('user/assets/images/soccer/logo@2x.png 2x') }}" alt="Alchemists" class="header-mobile__logo-img"></a>
+        </div>
+        <div class="header-mobile__inner">
+            <a id="header-mobile__toggle" class="burger-menu-icon"><span class="burger-menu-icon__line"></span></a>
+            <span class="header-mobile__search-icon" id="header-mobile__search-icon"></span>
+        </div>
+    </div>
+
+    <!-- Header Desktop -->
+    <header class="header">
+
+        <!-- Header Top Bar -->
+        <div class="header__top-bar clearfix">
+            <div class="container">
+
+                <!-- Account Navigation -->
+                <ul class="nav-account">
+
+                    <li class="nav-account__item nav-account__item--logout"><a href="_soccer_shop-login.html">Logout</a></li>
+                </ul>
+                <!-- Account Navigation / End -->
+
+            </div>
+        </div>
+        <!-- Header Top Bar / End -->
+
+        <!-- Header Secondary -->
+        <div class="header__secondary">
+            <div class="container">
+                <!-- Header Search Form -->
+                <div class="header-search-form">
+                    <form action="#" id="mobile-search-form" class="search-form">
+                        <input type="text" class="form-control header-mobile__search-control" value="" placeholder="Enter your seach here...">
+                        <button type="submit" class="header-mobile__search-submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+                <!-- Header Search Form / End -->
+                <ul class="info-block info-block--header">
+                    <li class="info-block__item info-block__item--contact-primary">
+                        <svg role="img" class="df-icon df-icon--whistle">
+                            <use xlink:href="assets/images/icons-soccer.svg#whistle"/>
+                        </svg>
+                        <h6 class="info-block__heading">Join Our Team!</h6>
+                        <a class="info-block__link" href="mailto:tryouts@alchemists.com">tryouts@alchemists.com</a>
+                    </li>
+                    <li class="info-block__item info-block__item--contact-secondary">
+                        <svg role="img" class="df-icon df-icon--soccer-ball">
+                            <use xlink:href="assets/images/icons-soccer.svg#soccer-ball"/>
+                        </svg>
+                        <h6 class="info-block__heading">Contact Us</h6>
+                        <a class="info-block__link" href="mailto:info@alchemists.com">info@alchemists.com</a>
+                    </li>
+                </ul>
+                <!-- Dropdown Shopping Cart / End -->
+
+                </li>
+
+                </ul>
+            </div>
+        </div>
+        <!-- Header Secondary / End -->
+
+        <!-- Header Primary -->
+        <div class="header__primary">
+            <div class="container">
+                <div class="header__primary-inner">
+
+                    <!-- Header Logo -->
+                    <div class="header-logo">
+                        <a href="_soccer_index.html"><img src="{{ asset('user/assets/images/soccer/logo.png') }}" srcset="assets/images/soccer/logo@2x.png 2x" alt="Alchemists" class="header-logo__img"></a>
+                    </div>
+                    <!-- Header Logo / End -->
+
+                    <!-- Main Navigation -->
+                    <nav class="main-nav clearfix">
+                        <ul class="main-nav__list">
+                            <li class="active"><a href="{{ path('home_page') }}">Strona główna</a></li>
+                            <li class=""><a href="{{ path('live_show') }}">Relacja LIVE</a>
+                            </li>
+                        </ul>
+
+                        <!-- Social Links -->
+                        <ul class="social-links social-links--inline social-links--main-nav">
+                            <li class="social-links__item">
+                                <a href="#" class="social-links__link" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li class="social-links__item">
+                                <a href="#" class="social-links__link" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li class="social-links__item">
+                                <a href="#" class="social-links__link" data-toggle="tooltip" data-placement="bottom" title="Google+"><i class="fa fa-google-plus"></i></a>
+                            </li>
+                        </ul>
+                        <!-- Social Links / End -->
+
+                        <!-- Pushy Panel Toggle -->
+                        <a href="#" class="pushy-panel__toggle">
+                            <span class="pushy-panel__line"></span>
+                        </a>
+                        <!-- Pushy Panel Toggle / Eng -->
+                    </nav>
+                    <!-- Main Navigation / End -->
+                </div>
+            </div>
+        </div>
+        <!-- Header Primary / End -->
+
+    </header>
+    <!-- Header / End -->
+
+    <!-- Pushy Panel - Dark -->
+    <aside class="pushy-panel pushy-panel--dark">
+        <div class="pushy-panel__inner">
+            <header class="pushy-panel__header">
+                <div class="pushy-panel__logo">
+                    <a href="index.html"><img src="assets/images/soccer/logo.png" srcset="assets/images/soccer/logo@2x.png 2x" alt="Alchemists"></a>
+                </div>
+            </header>
+            <div class="pushy-panel__content">
+
+            </div>
+            <a href="#" class="pushy-panel__back-btn"></a>
+        </div>
+    </aside>
+    <!-- Pushy Panel - Dark / End -->
+
+
+
+    <!-- Hero Slider
+    ================================================== -->
+
+    <div class="page-heading">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <h1 class="page-heading__title"><span class="highlight"></span></h1>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Content
+    ================================================== -->
+    <div class="site-content">
+        <div class="container">
+
+            <div class="row">
+                <!-- Content -->
+                <div class="content col-md-8">
+
+                    {% block body %}{% endblock %}
+
+                </div>
+                <!-- Content / End -->
+
+                <!-- Sidebar -->
+                <div id="sidebar" class="sidebar col-md-4">
+
+                    {% block schedule %} {% endblock %}
+
+                    <!-- Widget: Social Buttons - Condensed-->
+                    <aside class="widget widget--sidebar widget-social widget-social--condensed">
+                        <a href="#" class="btn-social-counter btn-social-counter--fb" target="_blank">
+                            <div class="btn-social-counter__icon">
+                                <i class="fa fa-facebook"></i>
+                            </div>
+                            <h6 class="btn-social-counter__title">Like Our Facebook Page</h6>
+                            <span class="btn-social-counter__count"><span class="btn-social-counter__count-num"></span> Likes</span>
+                            <span class="btn-social-counter__add-icon"></span>
+                        </a>
+                        <a href="#" class="btn-social-counter btn-social-counter--twitter" target="_blank">
+                            <div class="btn-social-counter__icon">
+                                <i class="fa fa-twitter"></i>
+                            </div>
+                            <h6 class="btn-social-counter__title">Follow Us on Twitter</h6>
+                            <span class="btn-social-counter__count"><span class="btn-social-counter__count-num"></span> Followers</span>
+                            <span class="btn-social-counter__add-icon"></span>
+                        </a>
+                        <a href="#" class="btn-social-counter btn-social-counter--rss" target="_blank">
+                            <div class="btn-social-counter__icon">
+                                <i class="fa fa-rss"></i>
+                            </div>
+                            <h6 class="btn-social-counter__title">Subscribe to Our RSS</h6>
+                            <span class="btn-social-counter__count"><span class="btn-social-counter__count-num">840</span> Subscribers</span>
+                            <span class="btn-social-counter__add-icon"></span>
+                        </a>
+                    </aside>
+                    <!-- Widget: Social Buttons - Condensed / End -->
+
+                    <!-- Widget: Featured Player -->
+                    <aside class="widget card widget--sidebar widget-player widget-player--soccer">
+                        <div class="widget__content card__content">
+                            <div class="widget-player__ribbon">
+                                <div class="fa fa-star"></div>
+                            </div>
+                            <figure class="widget-player__photo">
+                                <img src="{{ asset('user/assets/images/soccer/samples/_soccer_widget-featured-player.png') }}" alt="">
+                            </figure>
+                            <header class="widget-player__header clearfix">
+                                <div class="widget-player__number">07</div>
+                                <h4 class="widget-player__name">
+                                    <span class="widget-player__first-name">James</span>
+                                    <span class="widget-player__last-name">Messinal</span>
+                                </h4>
+                            </header>
+                            <div class="widget-player__content">
+                                <div class="widget-player__content-inner">
+
+                                    <div class="widget-player__stat widget-player__goals">
+                                        <div class="widget-player__stat-number">104</div>
+                                        <h6 class="widget-player__stat-label">Goals</h6>
+                                    </div>
+                                    <div class="widget-player__stat widget-player__shots">
+                                        <div class="widget-player__stat-number">129</div>
+                                        <h6 class="widget-player__stat-label">Shots</h6>
+                                    </div>
+                                    <div class="widget-player__stat widget-player__assists">
+                                        <div class="widget-player__stat-number">57</div>
+                                        <h6 class="widget-player__stat-label">Assists</h6>
+                                    </div>
+                                    <div class="widget-player__stat widget-player__games">
+                                        <div class="widget-player__stat-number">86</div>
+                                        <h6 class="widget-player__stat-label">Games</h6>
+                                    </div>
+                                </div>
+
+                                <div class="widget-player__content-alt">
+                                    <!-- Progress: Shot Accuracy -->
+                                    <div class="progress-stats">
+                                        <div class="progress__label">SHOT ACC</div>
+                                        <div class="progress">
+                                            <div class="progress__bar progress__bar--success progress__bar-width-90" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <div class="progress__number">96%</div>
+                                    </div>
+                                    <!-- Progress: Shot Accuracy / End -->
+
+                                    <!-- Progress: Pass Accuracy -->
+                                    <div class="progress-stats">
+                                        <div class="progress__label">PASS ACC</div>
+                                        <div class="progress">
+                                            <div class="progress__bar progress__bar--success progress__bar-width-70" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <div class="progress__number">74%</div>
+                                    </div>
+                                    <!-- Progress: Pass Accuracy / End -->
+                                </div>
+                            </div>
+
+                        </div>
+                    </aside>
+                    <!-- Widget: Featured Player / End -->
+
+
+                    <!-- Widget: Game Result -->
+                    <aside class="widget card widget--sidebar widget-game-result">
+                        <div class="widget__title card__header card__header--has-btn">
+                            <h4>Last Game Results</h4>
+                            <a href="#" class="btn btn-default btn-outline btn-xs card-header__button">Expand Stats</a>
+                        </div>
+                        <div class="widget__content card__content">
+                            <!-- Game Score -->
+                            <div class="widget-game-result__section">
+                                <div class="widget-game-result__section-inner">
+                                    <header class="widget-game-result__header">
+                                        <h3 class="widget-game-result__title">Championship Quarter Finals</h3>
+                                        <time class="widget-game-result__date" datetime="2016-03-24">Saturday, March 24th, 2016</time>
+                                    </header>
+
+                                    <div class="widget-game-result__main">
+                                        <!-- 1st Team -->
+                                        <div class="widget-game-result__team widget-game-result__team--first">
+                                            <figure class="widget-game-result__team-logo">
+                                                <a href="#"><img src="{{ asset('user/assets/images/soccer/logos/alchemists_last_game_results_big.png') }}" alt=""></a>
+                                            </figure>
+                                            <div class="widget-game-result__team-info">
+                                                <h5 class="widget-game-result__team-name">Alchemists</h5>
+                                                <div class="widget-game-result__team-desc">Elric Bros School</div>
+                                            </div>
+                                        </div>
+                                        <!-- 1st Team / End -->
+
+                                        <div class="widget-game-result__score-wrap">
+                                            <div class="widget-game-result__score">
+                                                <span class="widget-game-result__score-result widget-game-result__score-result--winner">2</span> <span class="widget-game-result__score-dash">-</span> <span class="widget-game-result__score-result widget-game-result__score-result--loser">0</span>
+                                            </div>
+                                            <div class="widget-game-result__score-label">Final Score</div>
+                                        </div>
+
+                                        <!-- 2nd Team -->
+                                        <div class="widget-game-result__team widget-game-result__team--second">
+                                            <figure class="widget-game-result__team-logo">
+                                                <a href="#"><img src="{{ asset('user/assets/images/samples/logo-l-clovers--sm.png') }}" alt=""></a>
+                                            </figure>
+                                            <div class="widget-game-result__team-info">
+                                                <h5 class="widget-game-result__team-name">Clovers</h5>
+                                                <div class="widget-game-result__team-desc">St Paddy's Institute</div>
+                                            </div>
+                                        </div>
+                                        <!-- 2nd Team / End -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Game Score / End -->
+                        </div>
+                    </aside>
+                    <!-- Widget: Game Result / End -->
+
+                    <!-- Widget: Match Announcement -->
+                    <aside class="widget widget--sidebar card widget-preview">
+                        <div class="widget__title card__header">
+                            <h4>Next Match</h4>
+                        </div>
+                        <div class="widget__content card__content">
+
+                            <!-- Match Preview -->
+                            <div class="match-preview">
+                                <section class="match-preview__body">
+                                    <header class="match-preview__header">
+                                        <time class="match-preview__date" datetime="2017-05-17">Friday August 14th</time>
+                                        <h3 class="match-preview__title match-preview__title--lg">Quarter Finals</h3>
+                                    </header>
+                                    <div class="match-preview__content">
+
+                                        <!-- 1st Team -->
+                                        <div class="match-preview__team match-preview__team--first">
+                                            <figure class="match-preview__team-logo">
+                                                <img src="{{ asset('user/assets/images/soccer/logos/alchemists_buy_tickets.png') }}" alt="">
+                                            </figure>
+                                            <h5 class="match-preview__team-name">Alchemists</h5>
+                                            <div class="match-preview__team-info">Elric Bros School</div>
+                                        </div>
+                                        <!-- 1st Team / End -->
+
+                                        <div class="match-preview__vs">
+                                            <div class="match-preview__conj">VS</div>
+                                            <div class="match-preview__match-info">
+                                                <time class="match-preview__match-time" datetime="2017-05-17 09:00">9:00 PM</time>
+                                                <div class="match-preview__match-place">Madison Cube Stadium</div>
+                                            </div>
+                                        </div>
+
+                                        <!-- 2nd Team -->
+                                        <div class="match-preview__team match-preview__team--second">
+                                            <figure class="match-preview__team-logo">
+                                                <img src="{{ asset('user/assets/images/soccer/logos/pirates_buy_tickets.png') }}" alt="">
+                                            </figure>
+                                            <h5 class="match-preview__team-name">Pirates</h5>
+                                            <div class="match-preview__team-info">Bebop Institute</div>
+                                        </div>
+                                        <!-- 2nd Team / End -->
+
+                                    </div>
+                                </section>
+                                <div class="countdown__content">
+                                    <div class="countdown-counter" data-date="September 12, 2017 12:00:00"></div>
+                                </div>
+                                <div class="match-preview__action match-preview__action--ticket">
+                                    <a href="#" class="btn btn-primary-inverse btn-lg btn-block">Buy Tickets Now</a>
+                                </div>
+                            </div>
+                            <!-- Match Preview / End -->
+
+                        </div>
+                    </aside>
+                    <!-- Widget: Match Announcement / End -->
+
+                </div>
+                <!-- Sidebar / End -->
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Content / End -->
+
+    <!-- Footer
+    ================================================== -->
+    <footer id="footer" class="footer">
+
+        <!-- Footer Widgets -->
+        <div class="footer-widgets">
+            <div class="footer-widgets__inner">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3">
+                            <div class="footer-col-inner">
+
+                                <!-- Footer Logo -->
+
+                                <!-- Footer Logo / End -->
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="footer-col-inner">
+
+                            </div>
+                        </div>
+                        <div class="clearfix visible-sm"></div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="footer-col-inner">
+
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="footer-col-inner">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sponsors -->
+            <div class="container">
+                <div class="sponsors">
+                    <h6 class="sponsors-title">Our Sponsors:</h6>
+                    <ul class="sponsors-logos">
+                        <li class="sponsors__item">
+                            <a href="#"><img src="{{ asset('user/assets/images/samples/sponsor-visa.png') }}" alt=""></a>
+                        </li>
+                        <li class="sponsors__item">
+                            <a href="#"><img src="{{ asset('user/assets/images/samples/sponsor-discover.png') }}" alt=""></a>
+                        </li>
+                        <li class="sponsors__item">
+                            <a href="#"><img src="{{ asset('user/assets/images/samples/sponsor-paypal.png') }}" alt=""></a>
+                        </li>
+                        <li class="sponsors__item">
+                            <a href="#"><img src="{{ asset('user/assets/images/samples/sponsor-skrill.png') }}" alt=""></a>
+                        </li>
+                        <li class="sponsors__item">
+                            <a href="#"><img src="{{ asset('user/assets/images/samples/sponsor-westernunion.png') }}" alt=""></a>
+                        </li>
+                        <li class="sponsors__item">
+                            <a href="#"><img src="{{ asset('user/assets/images/samples/sponsor-payoneer.png') }}" alt=""></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Sponsors / End -->
+
+        </div>
+        <!-- Footer Widgets / End -->
+
+        <!-- Footer Secondary -->
+        <div class="footer-secondary">
+            <div class="container">
+                <div class="footer-secondary__inner">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="footer-copyright"><a href="_soccer_index.html">Liga <b>Tomasz</b>Maj</a> 2017 &nbsp; | &nbsp; All Rights Reserved</div>
+                        </div>
+                        <div class="col-md-8">
+                            <ul class="footer-nav footer-nav--right footer-nav--condensed footer-nav--sm">
+                                <li class="footer-nav__item"><a href="#">Home</a></li>
+                                <li class="footer-nav__item"><a href="#">Features</a></li>
+                                <li class="footer-nav__item"><a href="#">Statistics</a></li>
+                                <li class="footer-nav__item"><a href="#">The Team</a></li>
+                                <li class="footer-nav__item"><a href="#">News</a></li>
+                                <li class="footer-nav__item"><a href="#">Shop</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Secondary / End -->
+    </footer>
+    <!-- Footer / End -->
+
+
+    <!-- Login/Register Tabs Modal -->
+    <div class="modal fade" id="modal-login-register-tabs" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg modal--login modal--login-only" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="modal-account-holder">
+                        <div class="modal-account__item modal-account__item--logo">
+                            <p class="modal-account__item-register-txt">Don’t have an account? <a href="#">Register Now</a> and enjoy all our benefits!</p>
+                        </div>
+                        <div class="modal-account__item">
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+
+                                <!-- Tab: Login -->
+                                <div role="tabpanel" class="tab-pane fade in active" id="tab-login">
+
+                                    <!-- Login Form -->
+                                    <form action="#" class="modal-form">
+                                        <h5>Login to your account</h5>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Enter your email address...">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Enter your password...">
+                                        </div>
+                                        <div class="form-group form-group--pass-reminder">
+                                            <label class="checkbox checkbox-inline">
+                                                <input type="checkbox" id="inlineCheckbox1" value="option1" checked> Remember Me
+                                                <span class="checkbox-indicator"></span>
+                                            </label>
+                                            <a href="#">Forgot your password?</a>
+                                        </div>
+                                        <div class="form-group form-group--submit">
+                                            <a href="shop-account.html" class="btn btn-primary-inverse btn-block">Enter to your account</a>
+                                        </div>
+                                        <div class="modal-form--social">
+                                            <h6>or Login with your social profile:</h6>
+                                            <ul class="social-links social-links--btn text-center">
+                                                <li class="social-links__item">
+                                                    <a href="#" class="social-links__link social-links__link--lg social-links__link--fb"><i class="fa fa-facebook"></i></a>
+                                                </li>
+                                                <li class="social-links__item">
+                                                    <a href="#" class="social-links__link social-links__link--lg social-links__link--twitter"><i class="fa fa-twitter"></i></a>
+                                                </li>
+                                                <li class="social-links__item">
+                                                    <a href="#" class="social-links__link social-links__link--lg social-links__link--gplus"><i class="fa fa-google-plus"></i></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </form>
+                                    <!-- Login Form / End -->
+
+                                </div>
+                                <!-- Tab: Login / End -->
+
+                                <!-- Tab: Register -->
+                                <div role="tabpanel" class="tab-pane fade" id="tab-register">
+
+                                    <!-- Register Form -->
+                                    <form action="#" class="modal-form">
+                                        <h5>Register Now!</h5>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Enter your email address...">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Enter your password...">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Repeat your password...">
+                                        </div>
+                                        <div class="form-group form-group--submit">
+                                            <a href="shop-account.html" class="btn btn-success btn-block">Create Your Account</a>
+                                        </div>
+                                        <div class="modal-form--note">You’ll receive a confirmation email in your inbox with a link to activate your account. </div>
+                                    </form>
+                                    <!-- Register Form / End -->
+
+                                </div>
+                                <!-- Tab: Register / End -->
+
+                            </div>
+
+                            <!-- Nav tabs -->
+                            <div class="nav-tabs-login-wrapper">
+                                <ul class="nav nav-tabs nav-justified nav-tabs--login" role="tablist">
+                                    <li role="presentation" class="active"><a href="#tab-login" role="tab" data-toggle="tab">Login</a></li>
+                                    <li role="presentation"><a href="#tab-register" role="tab" data-toggle="tab">Register</a></li>
+                                </ul>
+                            </div>
+                            <!-- Nav tabs / End -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login/Register Tabs Modal / End -->
+
+
+</div>
+
+<!-- Javascript Files
+================================================== -->
+<!-- Core JS -->
+<script src="{{ asset('user/assets/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('user/assets/js/core-min.js') }}"></script>
+
+<!-- Vendor JS -->
+<script src="{{ asset('user/assets/vendor/twitter/jquery.twitter.js') }}"></script>
+
+
+<!-- Template JS -->
+<script src="{{ asset('user/assets/js/init.js') }}"></script>
+<script src="{{ asset('user/assets/js/custom.js') }}"></script>
+
+</body>
+</html>
